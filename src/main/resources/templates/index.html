@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>hello</title>
@@ -79,30 +79,36 @@
     }
   </style>
 </head>
+
 <body>
+
 <header>
   <h1><a href="/">로고</a></h1>
   <textarea name="title" id="utitle" rows="1" cols="60" placeholder="검색어" maxlength="100" required></textarea>
 </header>
 
-</nav>
 
-<nav align=right>
+<nav th:if="${#session.getAttribute('loginEmail') == null}" align=right>
   <a href="/member/login">로그인</a>
   <a href="/member/register">회원가입</a>
 </nav>
 
+<nav th:if="${#session.getAttribute('loginEmail') != null}" align=right>
+  <p th:text="'로그인한 사용자: ' + ${#session.getAttribute('loginEmail')}"></p>
+</nav>
+
+
 <aside id="left">
   <h4>카테고리</h4>
-  <ul>
-    <li><a target="iframe1" href="">공지사항</a></li>
-    <li><a target="iframe1" href="">자유게시판</a></li>
+    <li><a target= href="">자유게시판</a></li>
     <li><a target="iframe1" href="">비밀게시판</a></li>
     <li><a target="iframe1" href="">컴퓨터공학과</a></li>
     <li><a target="iframe1" href="">족보팝니다</a></li>
     <li><a target="iframe1" href="">끝말잇기</a></li>
   </ul>
 </aside>
+
+
 <section id="main">
   <div id="board_write">
     <h4>[게시판 종류]</h4>
@@ -149,14 +155,12 @@
           <button type="submit">글 작성</button>
         </dib>
       </form>
+
     </div>
+
   </div>
+
 </section>
-</body>
-</html>
-</title>
-</head>
-<body>
 
 </body>
 </html>

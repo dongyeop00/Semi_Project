@@ -5,6 +5,7 @@ import com.gml.semi_project.Service.MemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -22,19 +23,22 @@ public class MemberController {
 
     @GetMapping("/member/login")
     public String loginForm(){return "login";}
+
+
     @PostMapping("/member/login")
-    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session){
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
         MemberDTO loginResult = memberService.login(memberDTO); // 회원정보가 맞는지 확인
-        if(loginResult != null){
+        if (loginResult != null) {
             session.setAttribute("loginEmail", loginResult.getMemberEmail());
             System.out.println("로그인 성공");
-            return "index";
-        }
-        else{
+
+            return "redirect:/";
+        } else {
             System.out.println("로그인 실패");
             return "login";
         }
     }
+
 
     @PostMapping("/member/email-check")
     public @ResponseBody String emailCheck(@RequestParam("memberEmail") String memberEmail){
