@@ -26,7 +26,7 @@ public class MemberController {
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session){
         MemberDTO loginResult = memberService.login(memberDTO); // 회원정보가 맞는지 확인
         if(loginResult != null){
-            session.setAttribute("loginEmail", loginResult.getMemberEmail());
+            session.setAttribute("loginID", loginResult.getMemberID());
             System.out.println("로그인 성공");
             return "index";
         }
