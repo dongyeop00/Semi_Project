@@ -17,7 +17,7 @@ public class MemberController {
     @PostMapping("/member/register")
     public String register(@ModelAttribute MemberDTO memberDTO){
         memberService.register(memberDTO);
-        return "login_index";
+        return "login";
     }
 
     @GetMapping("/member/login")
@@ -25,11 +25,11 @@ public class MemberController {
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session){
         MemberDTO loginResult = memberService.login(memberDTO); // 회원정보가 맞는지 확인
         if(loginResult != null){
-            session.setAttribute("loginEmail", loginResult.getMemberEmail());
-            return "main";
+            session.setAttribute("loginID", loginResult.getMemberID());
+            return "index";
         }
         else{
-            return "login";
+            return "index";
         }
     }
 
