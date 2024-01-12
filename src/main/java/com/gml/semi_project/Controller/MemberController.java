@@ -17,7 +17,7 @@ public class MemberController {
     @PostMapping("/member/register")
     public String register(@ModelAttribute MemberDTO memberDTO){
         memberService.register(memberDTO);
-        return "login";
+        return "login_index";
     }
 
     @GetMapping("/member/login")
