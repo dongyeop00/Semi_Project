@@ -19,11 +19,11 @@ public class MemberDTO {
 
     public static MemberDTO toMemberDTO(MemberEntity memberEntity){
         MemberDTO memberDTO = new MemberDTO();
-        memberDTO.setMemberID(memberDTO.getMemberID());
+        memberDTO.setMemberID(memberEntity.getMemberID());
         memberDTO.setId(memberEntity.getId());
-        memberDTO.setMemberPassword(memberDTO.getMemberPassword());
-        memberDTO.setMemberEmail(memberDTO.getMemberEmail());
-        memberDTO.setMemberNickname(memberDTO.getMemberNickname());
+        memberDTO.setMemberPassword(memberEntity.getMemberPassword());
+        memberDTO.setMemberEmail(memberEntity.getMemberEmail());
+        memberDTO.setMemberNickname(memberEntity.getMemberNickname());
         return memberDTO;
     }
 }

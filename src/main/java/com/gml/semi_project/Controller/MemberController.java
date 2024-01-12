@@ -22,14 +22,17 @@ public class MemberController {
 
     @GetMapping("/member/login")
     public String loginForm(){return "login";}
+    @PostMapping("/member/login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session){
         MemberDTO loginResult = memberService.login(memberDTO); // 회원정보가 맞는지 확인
         if(loginResult != null){
-            session.setAttribute("loginID", loginResult.getMemberID());
+            session.setAttribute("loginEmail", loginResult.getMemberEmail());
+            System.out.println("로그인 성공");
             return "index";
         }
         else{
-            return "index";
+            System.out.println("로그인 실패");
+            return "login";
         }
     }
 
