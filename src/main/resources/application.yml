@@ -20,3 +20,17 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+
+  spring:
+    mail:
+      # Google smtp server 사용
+      host: smtp.gmail.com
+      port: 587
+      username: wnsdnd0611
+      password: pzhhldhkzmohtqsu
+      properties:
+        mail:
+          smtp:
+            starttls:
+              enable: true
+            auth: true

@@ -22,12 +22,12 @@
 <body>
 <form action="/member/register" method="post">
     <!-- name속성: 서버로 전송할 때 변수이름의 역할 -->
-    ID <input type="text" name="memberID" id="memberID" onchange="idCheck()">
+    ID <input type="text" name="memberID" id="memberID" onkeyup="idCheck()">
     <p id="check-id"></p>
-    EMAIL <input type="text" name="memberEmail" id="memberEmail" onchange="emailCheck()"> <br>
+    EMAIL <input type="text" name="memberEmail" id="memberEmail" onkeyup="emailCheck()"> <br>
     <p id="check-email"></p>
     PASSWORD <input type="password" name="memberPassword"> <br>
-    NICKNAME <input type="text" name="memberNickname" id="memberNickname" onchange="nicknameCheck()"><br>
+    NICKNAME <input type="text" name="memberNickname" id="memberNickname" onkeyup="nicknameCheck()"><br>
     <p id="check-nickname"></p>
     <button type="submit">회원가입</button>
 
