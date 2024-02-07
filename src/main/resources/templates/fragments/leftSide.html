@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<div th:fragment="fragment-aside">
+  <aside class  = "aside">
+  <div style="float:left;" th:if="${session.member != null}" class="not-logged-in">
+    <!-- 세션에 로그인 정보가 있는 경우에만 실행 -->
+    <p id="information" th:text="${session.member.memberName + '님 안녕하세요'}"></p>
+    <!--진짜 뭔 이유인지 모르겠는데 form으로 안묶으면 절대 안됐음 ㅡㅡ -->
+    <form th:action="@{|/member/detail/${session.member.id}|}" method="get">
+      <button type="submit" id="index_detail">내 정보</button>
+    </form>
+    <button onclick="logout()" id="index_logout">로그아웃</button>
+  </div>
+
+  <div style="float:left; width:100px; height:100px; top:100px;" th:if="${session.member == null}" class="logged-in">
+    <!-- 세션에 로그인 정보가 없는 경우에만 실행 -->
+    <form action="/member/login" method="get">
+      <button type="button" class="btn btn-primary">로그인</button>
+    </form>
+    <form action="/member/join" method="get">
+      <button type="button" class="btn btn-primary">회원가입</button>
+    </form>
+  </div>
+  </aside>
+</div>
+
+</html>

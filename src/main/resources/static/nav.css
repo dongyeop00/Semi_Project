@@ -1,0 +1,29 @@
+nav{
+    width : 1500px; /* 메뉴 틀의 넓이 */
+    margin : 0 auto; /* 상하 마진 0, 좌우는 자동조절로 중앙 */
+}
+nav ul{
+    list-style: none; /* 메뉴 앞의 점을 없앤다. */
+    border : 2px solid #cccccc; /* 2px 크기의 회색 네모선을 만든다. */
+    border-radius: 10px; /* 네모 선을 10px만큼 둥글게  */
+    height : 40px; /* 40px만큼 ul 높이를 올린다. */
+}
+nav ul li{
+    float : left; /* 왼쪽 정렬 */
+    margin-top: 10px; /* 마진을 위로 10px만큼 적용 */
+    padding-right : 30px; /* 패딩을 오른쪽으로 30px만큼 적용 */
+    height: 20px; /* li 높이를 20px만큼 높인다. */
+}
+nav ul li a{
+    display: block; /* 링크 걸린 부분에 블록을 지정해줘 공간 확보 */
+    color: #0099ff; /* 글자 색 */
+    font-weight: bold; /* 글자를 굵게 */
+    text-align : center; /* 영역 안에 글자를 중간에 위치 */
+    padding : 1px 10px 3px 10px; /* 패딩 설정 */
+    text-decoration: none; /* 링크가 걸려있을 시 적용되는 밑줄 제거 */
+}
+nav ul li a:hover{
+    background-color: #0099ff; /* 마우스 오버시 글자 배경색 적용 */
+    border-radius: 10px;
+    color : white; /* 마우스 오버시 글자색 적용 */
+}
