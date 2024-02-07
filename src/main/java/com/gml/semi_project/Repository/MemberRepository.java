@@ -1,7 +1,6 @@
 package com.gml.semi_project.Repository;
 
 
-import com.gml.semi_project.Entity.MemberEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
