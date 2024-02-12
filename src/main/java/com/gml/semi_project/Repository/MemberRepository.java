@@ -1,15 +1,17 @@
 package com.gml.semi_project.Repository;
-/*
 
+import com.gml.semi_project.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
-    Optional<MemberEntity> findByMemberID(String memberID);
+/*
+public interface MemberRepository extends JpaRepository<User, Long> {
+    Optional<User> findByMemberID(String memberID);
 
-    Optional<MemberEntity> findByMemberEmail(String memberEmail);
+    Optional<User> findByMemberEmail(String memberEmail);
 
-    Optional<MemberEntity> findByMemberNickname(String memberNickname);
+    Optional<User> findByMemberNickname(String memberNickname);
 }
-*/
+
+ */
