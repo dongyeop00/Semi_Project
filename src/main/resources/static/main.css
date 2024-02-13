@@ -3,11 +3,13 @@
     border-radius: 10px;
     text-align: center; /* 내부 요소 가로 중앙 정렬 */
     position: fixed; /* 고정 위치로 설정 */
-    top: 100px; /* 페이지의 위쪽에 고정 */
-    right: 100px; /* 페이지의 오른쪽에 고정 */
-    bottom: 0; /* 페이지의 아래쪽에 고정 */
-    left: 0; /* 페이지의 왼쪽에 고정 */
-    margin: auto; /* 가운데 정렬 */
+    top: 45.5%; /* 페이지의 위쪽에 고정 */
+    right: 10%; /* 페이지의 오른쪽에 고정 */
+    transform: translate(-50%, -50%); /* 요소를 수평 및 수직으로 정중앙으로 이동 */
     width: 45%; /* 너비 조정 */
+    height: 70%;
+    max-width: 1000px; /* 최대 너비 설정 */
     background-color: #f0f0f0;
+    padding: 20px; /* 내용과 테두리 사이 여백 설정 */
+    font-size: 16px; /* 텍스트 크기 설정 */
 }

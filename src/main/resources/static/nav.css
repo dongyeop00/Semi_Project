@@ -6,7 +6,7 @@ nav ul{
     list-style: none; /* 메뉴 앞의 점을 없앤다. */
     border : 2px solid #cccccc; /* 2px 크기의 회색 네모선을 만든다. */
     border-radius: 10px; /* 네모 선을 10px만큼 둥글게  */
-    height : 40px; /* 40px만큼 ul 높이를 올린다. */
+    height : 65px; /* 40px만큼 ul 높이를 올린다. */
 }
 nav ul li{
     float : left; /* 왼쪽 정렬 */
@@ -14,8 +14,10 @@ nav ul li{
     padding-right : 30px; /* 패딩을 오른쪽으로 30px만큼 적용 */
     height: 20px; /* li 높이를 20px만큼 높인다. */
 }
+
 nav ul li a{
     display: block; /* 링크 걸린 부분에 블록을 지정해줘 공간 확보 */
+    font-size: 1.3em;
     color: #0099ff; /* 글자 색 */
     font-weight: bold; /* 글자를 굵게 */
     text-align : center; /* 영역 안에 글자를 중간에 위치 */

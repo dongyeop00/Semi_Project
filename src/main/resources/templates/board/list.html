@@ -7,6 +7,36 @@
     <link rel="stylesheet" type="text/css" href="../leftSide.css">
     <link rel="stylesheet" type="text/css" href="../rightSide.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<style>
+
+
+    .form-group {
+        position: absolute;
+        top: 100px; /* 이동하고 싶은 위치의 y 좌표값 */
+        left: 450px; /* 이동하고 싶은 위치의 x 좌표값 */
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        width: 45%;
+    }
+
+    .form-label {
+        display: inline-block;
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .form-button{
+        position: absolute;
+        top: 110px; /* 이동하고 싶은 위치의 y 좌표값 */
+        left: 1200px; /* 이동하고 싶은 위치의 x 좌표값 */
+        margin-bottom: 20px;
+    }
+
+</style>
 
 </head>
 <body>
@@ -15,6 +45,22 @@
 <div th:replace="/fragments/nav.html :: fragment-nav"></div>
 <div th:replace="/fragments/leftSide.html :: fragment-leftAside"></div>
 <div th:replace="/fragments/rightSide.html :: fragment-rightAside"></div>
+
+<div class="container">
+    <div class="form-group">
+        <label class="form-label" th:switch="${category}">
+            <span th:case="'announcement'">   공지사항</span>
+            <span th:case="'levelup'">   등업게시판</span>
+            <span th:case="'free'">   자유게시판</span>
+            <span th:case="file">   족보게시판</span>
+        </label>
+    </div>
+
+    <form class="form-button" th:action="|@{/board/{category}/write (category = ${category})}|" method="get">
+        <button type="submit">글 작성</button>
+    </form>
+
+</div>
 
 </body>
 </html>
