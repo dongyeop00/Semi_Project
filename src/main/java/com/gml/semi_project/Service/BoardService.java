@@ -49,4 +49,11 @@ public class BoardService {
             return null;
         }
     }
+
+    public void delete(Long id) {
+        Optional<Board> optionalBoardEntity = boardRepository.findById(id);
+        if(optionalBoardEntity.isPresent()){
+            boardRepository.deleteById(id);
+        }
+    }
 }

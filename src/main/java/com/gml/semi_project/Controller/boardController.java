@@ -51,19 +51,20 @@ public class boardController {
     }
 
     @GetMapping("/{category}/update/{id}") //게시글 글 수정
-    public String updateForm(@PathVariable String category, @PathVariable Long boardId, Model model, HttpSession session){
+    public String updateForm(@PathVariable String category, @PathVariable Long id, Model model, HttpSession session){
         //
         return "/board/update";
     }
 
     @PostMapping("/{category}/update/{id}")
-    public String update(@PathVariable String category, @PathVariable Long boardId, @ModelAttribute BoardDTO boardDTO){
+    public String update(@PathVariable String category, @PathVariable Long id, @ModelAttribute BoardDTO boardDTO){
         //
         return "/board/detail";
     }
 
     @GetMapping("/{category}/delete/{id}") //게시글 삭제
-    public String delete(@PathVariable String category, @PathVariable Long boardId, HttpSession session){
+    public String delete(@PathVariable String category, @PathVariable Long id, HttpSession session){
+        boardService.delete(id);
         return "redirect:/board/" + category;
     }
 
