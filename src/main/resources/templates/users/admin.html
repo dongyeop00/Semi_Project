@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header.html :: head" />
 <body>
-<div th:replace="fragments/header.html :: header ('admin')"/>
 <div class="row">
     <div class="offset-1 col-10">
         <form class="form-group" align="center" style="height: 40px;" th:method="get"
@@ -32,11 +30,11 @@
                 <th style="width: 15%" th:text="${user.loginId}"/>
                 <th style="width: 15%" th:text="${user.nickname}"/>
                 <th style="width: 10%" th:text="${user.userRole}"/>
-                <th style="width: 15%" th:text="${#temporals.format(user.createdAt, 'yy/MM/dd HH:mm')}"/>
+                <!--<th style="width: 15%" th:text="${#temporals.format(user.createdAt, 'yy/MM/dd HH:mm')}"/>-->
                 <th style="width: 10%" th:text="${user.boards.size}"/>
-                <th style="width: 10%" th:text="${user.comments.size}"/>
-                <th style="width: 10%" th:text="${user.likes.size}"/>
-                <th style="width: 10%" th:text="${user.receivedLikeCnt}"/>
+                <!--<th style="width: 10%" th:text="${user.comments.size}"/>-->
+                <!--<th style="width: 10%" th:text="${user.likes.size}"/>-->
+                <!--<th style="width: 10%" th:text="${user.receivedLikeCnt}"/>-->
             </tr>
             </tbody>
         </table>

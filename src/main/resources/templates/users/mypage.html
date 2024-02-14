@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header.html :: head" />
+
 <body>
-<div th:replace="fragments/header.html :: header ('myPage')"/>
-<div th:replace="fragments/myPageHeader.html :: myPageHeader"/>
+
 <br/><br/>
+<!--
 <div class="row">
   <div class="offset-2 col-1">
     <h5>전체: [[${boards.size}]]개</h5>
   </div>
+
   <div class="col-6" align="center">
     <button th:if="${category == 'board'}" class="btn selected-btn" style="margin: 0px 30px;" onclick="location.href='/users/myPage/board'">작성한 글</button>
     <button th:unless="${category == 'board'}" class="btn select-btn" style="margin: 0px 30px;" onclick="location.href='/users/myPage/board'">작성한 글</button>
@@ -18,6 +19,7 @@
     <button th:unless="${category == 'comment'}"  class="btn select-btn" style="margin: 0px 30px;" onclick="location.href='/users/myPage/comment'">댓글 추가한 글</button>
   </div>
 </div>
+-->
 <br/>
 <div class="row">
   <div class="offset-2 col-8">

@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header.html :: head" />
 <body>
-<div th:replace="fragments/header.html :: header ('user')"/>
 <div class="row">
   <form class="offset-4 col-4 form-group user-form" th:method="post" th:action="@{/users/login}" th:object="${userLoginRequest}" align="left">
     <div>
       <label th:for="loginId">아이디</label><br/>
-      <input type="text" th:field="*{loginId}" placeholder="아이디를 입력해주세요."/>
+      <input type="text" th:field="*{memberId}" placeholder="아이디를 입력해주세요."/>
     </div>
     <br/>
     <div>
