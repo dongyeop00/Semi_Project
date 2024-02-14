@@ -101,7 +101,7 @@ public class UserController {
         model.addAttribute("userDto", UserDTO.of(user));
         return "users/delete";
     }
-
+/*
     @PostMapping("/delete")
     public String userDelete(@ModelAttribute UserDTO dto, Authentication auth, Model model) {
         Boolean deleteSuccess = userService.delete(auth.getName(), dto.getNowPassword());
@@ -115,7 +115,7 @@ public class UserController {
             return "printMessage";
         }
     }
-
+*/
     @GetMapping("/admin")
     public String adminPage(@RequestParam(required = false, defaultValue = "1") int page,
                             @RequestParam(required = false, defaultValue = "") String keyword,

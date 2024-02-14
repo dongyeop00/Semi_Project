@@ -7,18 +7,18 @@
 
   <div  th:if="${session.member != null}" class="not-logged-in">
     <p id="information" th:text="${session.member.memberName + '님 안녕하세요'}"></p>
-    <form th:action="@{|/member/detail/${session.member.id}|}" method="get">
+    <form th:action="@{|/users/mypage/${session.member.id}|}" method="get">
       <button type="submit" id="index_detail">내 정보</button>
     </form>
     <button onclick="logout()" id="index_logout">로그아웃</button>
   </div>
 
   <div th:if="${session.member == null}" class="logged-in">
-    <form action="/member/login" method="get">
-      <button type="button" class="btn btn-primary">로그인</button>
+    <form action="/users/login" method="get">
+      <button type="button" class="btn btn-primary" onclick="location.href = '/users/login'">로그인</button>
     </form>
-    <form action="/member/join" method="get">
-      <button type="button" class="btn btn-primary">회원가입</button>
+    <form action="/users/join" method="get">
+      <button type="button" class="btn btn-primary" onclick="location.href = '/users/join'">회원가입</button>
     </form>
   </div>
 
