@@ -38,6 +38,7 @@ public class SecurityConfig {
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
+                /*
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers(anonymousUserUrl).anonymous()
@@ -55,7 +56,7 @@ public class SecurityConfig {
                         exceptionHandling
                                 .accessDeniedHandler(new MyAccessDeniedHandler(userRepository)) // 인가 실패
                                 .authenticationEntryPoint(new MyAuthenticationEntryPoint()) // 인증 실패
-                )
+                )*/
                 .formLogin(formLogin ->
                         formLogin
                                 .loginPage("/users/login") // 로그인 페이지

@@ -21,7 +21,7 @@ public class Comment extends BaseEntity {
 
     private String body;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY
     private User user;      // 작성자
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -31,4 +31,4 @@ public class Comment extends BaseEntity {
         this.body = newBody;
     }
 }
- */
+*/

@@ -94,6 +94,7 @@ public class UserService {
             loginUser.edit(encoder.encode(dto.getNewPassword()), dto.getNickname());
         }
     }
+    /*
     @Transactional
     public Boolean delete(String loginId, String nowPassword) {
         User loginUser = userRepository.findByMemberId(loginId).get();
@@ -115,7 +116,7 @@ public class UserService {
             return false;
         }
     }
-
+*/
     public Page<User> findAllByNickname(String keyword, PageRequest pageRequest) {
         return userRepository.findAllByNicknameContains(keyword, pageRequest);
     }
