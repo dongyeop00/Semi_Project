@@ -1,5 +1,7 @@
 package com.gml.semi_project.Service;
 
+import com.gml.semi_project.DTO.UserCntDTO;
+import com.gml.semi_project.DTO.UserDTO;
 import com.gml.semi_project.DTO.UserJoinRequest;
 import com.gml.semi_project.Entity.User;
 import com.gml.semi_project.Enum.UserRole;
@@ -18,8 +20,10 @@ import org.springframework.validation.FieldError;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final LikeREpository likeRepository;
+    /*
+    private final LikeRepository likeRepository;
     private final CommentRepository commentRepository;
+     */
     private final BCryptPasswordEncoder encoder;
 
     public BindingResult joinValid(UserJoinRequest req, BindingResult bindingResult)
@@ -30,7 +34,7 @@ public class UserService {
         else if(req.getMemberId().length()>10){
             bindingResult.addError(new FieldError("req", "memberId", "아이디는 10자 이내입니다."));
         }
-        else if (userRepository.existsByMoginId(req.getLoginId())) {
+        else if (userRepository.existsByMemberId(req.getMemberId())) {
             bindingResult.addError(new FieldError("req", "memberId", "아이디가 중복됩니다."));
         }
 
@@ -48,8 +52,40 @@ public class UserService {
 
         return bindingResult;
     }
+    public void join(UserJoinRequest req) {
+        userRepository.save(req.toEntity( encoder.encode(req.getPassword()) ));
+    }
+
+    public User myInfo(String loginId) {
+        return userRepository.findByMemberId(loginId).get();
+    }
+
+    public BindingResult editValid(UserDTO dto, BindingResult bindingResult, String loginId)
+    {
+        User loginUser = userRepository.findByMemberId(loginId).get();
+
+        if (dto.getNowPassword().isEmpty()) {
+            bindingResult.addError(new FieldError("dto", "nowPassword", "현재 비밀번호가 비어있습니다."));
+        } else if (!encoder.matches(dto.getNowPassword(), loginUser.getPassword())) {
+            bindingResult.addError(new FieldError("dto", "nowPassword", "현재 비밀번호가 틀렸습니다."));
+        }
+
+        if (!dto.getNewPassword().equals(dto.getNewPasswordCheck())) {
+            bindingResult.addError(new FieldError("dto", "newPasswordCheck", "비밀번호가 일치하지 않습니다."));
+        }
+
+        if (dto.getNickname().isEmpty()) {
+            bindingResult.addError(new FieldError("dto", "nickname", "닉네임이 비어있습니다."));
+        } else if (dto.getNickname().length() > 10) {
+            bindingResult.addError(new FieldError("dto", "nickname", "닉네임이 10자가 넘습니다."));
+        } else if (!dto.getNickname().equals(loginUser.getNickname()) && userRepository.existsByNickname(dto.getNickname())) {
+            bindingResult.addError(new FieldError("dto", "nickname", "닉네임이 중복됩니다."));
+        }
+
+        return bindingResult;
+    }
     @Transactional
-    public void edit(UserDto dto, String memberId) {
+    public void edit(UserDTO dto, String memberId) {
         User loginUser = userRepository.findByMemberId(memberId).get();
 
         if (dto.getNewPassword().equals("")) {
@@ -58,10 +94,9 @@ public class UserService {
             loginUser.edit(encoder.encode(dto.getNewPassword()), dto.getNickname());
         }
     }
-
     @Transactional
     public Boolean delete(String loginId, String nowPassword) {
-        User loginUser = userRepository.findByLoginId(loginId).get();
+        User loginUser = userRepository.findByMemberId(loginId).get();
 
         if (encoder.matches(nowPassword, loginUser.getPassword())) {
             List<Like> likes = likeRepository.findAllByUserLoginId(loginId);
@@ -91,8 +126,8 @@ public class UserService {
         user.changeRole();
     }
 
-    public UserCntDto getUserCnt() {
-        return UserCntDto.builder()
+    public UserCntDTO getUserCnt() {
+        return UserCntDTO.builder()
                 .totalUserCnt(userRepository.count())
                 .totalAdminCnt(userRepository.countAllByUserRole(UserRole.ADMIN))
                 .totalNewbieCnt(userRepository.countAllByUserRole(UserRole.NEWBIE))

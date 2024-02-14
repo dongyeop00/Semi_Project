@@ -1,10 +1,13 @@
 package com.gml.semi_project.Controller;
 
+import com.gml.semi_project.DTO.UserDTO;
 import com.gml.semi_project.DTO.UserJoinRequest;
 import com.gml.semi_project.DTO.UserLoginRequest;
+import com.gml.semi_project.Entity.User;
 import com.gml.semi_project.Service.BoardService;
 import com.gml.semi_project.Service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,8 +18,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
@@ -63,7 +66,7 @@ public class UserController {
 
     @GetMapping("/myPage/{category}")
     public String myPage(@PathVariable String category, Authentication auth, Model model) {
-        model.addAttribute("boards", boardService.findMyBoard(category, auth.getName()));
+        //model.addAttribute("boards", boardService.findMyBoard(category, auth.getName()));
         model.addAttribute("category", category);
         model.addAttribute("user", userService.myInfo(auth.getName()));
         return "users/myPage";
@@ -72,12 +75,12 @@ public class UserController {
     @GetMapping("/edit")
     public String userEditPage(Authentication auth, Model model) {
         User user = userService.myInfo(auth.getName());
-        model.addAttribute("userDto", UserDto.of(user));
+        model.addAttribute("userDTO", UserDTO.of(user));
         return "users/edit";
     }
 
     @PostMapping("/edit")
-    public String userEdit(@Valid @ModelAttribute UserDto dto, BindingResult bindingResult,
+    public String userEdit(@Valid @ModelAttribute UserDTO dto, BindingResult bindingResult,
                            Authentication auth, Model model) {
 
         // Validation
@@ -95,12 +98,12 @@ public class UserController {
     @GetMapping("/delete")
     public String userDeletePage(Authentication auth, Model model) {
         User user = userService.myInfo(auth.getName());
-        model.addAttribute("userDto", UserDto.of(user));
+        model.addAttribute("userDto", UserDTO.of(user));
         return "users/delete";
     }
 
     @PostMapping("/delete")
-    public String userDelete(@ModelAttribute UserDto dto, Authentication auth, Model model) {
+    public String userDelete(@ModelAttribute UserDTO dto, Authentication auth, Model model) {
         Boolean deleteSuccess = userService.delete(auth.getName(), dto.getNowPassword());
         if (deleteSuccess) {
             model.addAttribute("message", "탈퇴 되었습니다.");

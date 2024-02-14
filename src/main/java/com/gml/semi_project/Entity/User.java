@@ -28,8 +28,8 @@ public class User {
     private Long id;
 
     private String memberId; // 아이디
-    private String Password; // 비밀번호
-    private String Nickname; // 닉네임
+    private String password; // 비밀번호
+    private String nickname; // 닉네임
     private LocalDateTime createAt; // 만든 시간
     private Integer receivedWarningCnt; // 받은 신고 수
     private Integer receivedLikeCnt; // 받은 좋아요 수
@@ -37,14 +37,20 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserRole userRole; // 권한
 
+    /*
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     private List<Board> boards;
 
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     private List<Like> likes; // 유저가 누른 좋아요
 
+
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     private List<Comment> comments;
+    private String nickname;
+
+
+     */
 
     public void rankUp(UserRole userRole, Authentication auth) {
         this.userRole = userRole;
