@@ -21,26 +21,32 @@ public class boardController {
 
     @GetMapping("/{category}") //게시판 목록 조회
     public String list(@PathVariable String category, Model model) {
-        //List<BoardDTO> boardDTOList = boardService.findBoard(category);
-        //model.addAttribute("boardList", boardDTOList);
+        BoardCategory boardCategory = BoardCategory.of(category);
+        List<BoardDTO> boardDTOList = boardService.findBoard(boardCategory);
+        model.addAttribute("boardList", boardDTOList);
         return "/board/list";
     }
 
     @GetMapping("/{category}/write") //게시판 글 쓰기
     public String writeForm(@PathVariable String category, HttpSession session, Model model) {
-        //
+        // 사용자 정보 가져오는 로직
+
+        // model.addAttibute("member", memberDTO);
         return "/board/write";
     }
 
     @PostMapping("/{category}/write")
     public String write(@PathVariable String category, HttpSession session, @ModelAttribute BoardDTO boardDTO) {
-        //
+        BoardCategory boardCategory = BoardCategory.of(category);
+        boardService.save(boardCategory, boardDTO);
         return "redirect:/board/" + category;
     }
 
     @GetMapping("/{category}/{id}") //게시글 글 조회
-    public String detail(@PathVariable String category, @PathVariable Long boardId, Model model, HttpSession session) {
-        //
+    public String detail(@PathVariable String category, @PathVariable Long id, Model model, HttpSession session) {
+        boardService.updateHits(id);
+        BoardDTO boardDTO = boardService.findById(id);
+        model.addAttribute("board",boardDTO);
         return "/board/detail";
     }
 
