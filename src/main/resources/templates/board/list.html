@@ -8,7 +8,12 @@
     <link rel="stylesheet" type="text/css" href="../rightSide.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <style>
+    table{
+        position: absolute;
+        top:200px;
+        left:450px;
 
+    }
 
     .form-group {
         position: absolute;
@@ -60,7 +65,21 @@
         <button type="submit">글 작성</button>
     </form>
 
+
 </div>
+
+<table>
+    <tr>
+        <th>게시글 번호</th>
+        <th>제목</th>
+        <th>조회수</th>
+    </tr>
+    <tr th:each="board: ${boardList}">
+        <td th:text="${board.id}  "></td>
+        <td><a th:href="@{/board/{category}/{id}(category=${category}, id=${board.id})}" th:text="${board.boardTitle}  "></a></td>
+        <td th:text="${board.boardHits}  "></td>
+    </tr>
+</table>
 
 </body>
 </html>
