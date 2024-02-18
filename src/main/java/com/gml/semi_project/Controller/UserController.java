@@ -18,8 +18,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
@@ -64,12 +62,12 @@ public class UserController {
         return "users/login";
     }
 
-    @GetMapping("/myPage/{category}")
+    @GetMapping("/mypage/{category}")
     public String myPage(@PathVariable String category, Authentication auth, Model model) {
         //model.addAttribute("boards", boardService.findMyBoard(category, auth.getName()));
         model.addAttribute("category", category);
         model.addAttribute("user", userService.myInfo(auth.getName()));
-        return "users/myPage";
+        return "myPage";
     }
 
     @GetMapping("/edit")

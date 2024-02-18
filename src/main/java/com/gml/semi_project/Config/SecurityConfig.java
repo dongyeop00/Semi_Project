@@ -29,16 +29,11 @@ public class SecurityConfig {
     private static final String[] authenticatedUserUrl = {"/boards/**/**/edit", "/boards/**/**/delete", "/likes/**", "/users/myPage/**", "/users/edit", "/users/delete"};
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
-                /*
+
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers(anonymousUserUrl).anonymous()
@@ -56,7 +51,7 @@ public class SecurityConfig {
                         exceptionHandling
                                 .accessDeniedHandler(new MyAccessDeniedHandler(userRepository)) // 인가 실패
                                 .authenticationEntryPoint(new MyAuthenticationEntryPoint()) // 인증 실패
-                )*/
+                )
                 .formLogin(formLogin ->
                         formLogin
                                 .loginPage("/users/login") // 로그인 페이지
