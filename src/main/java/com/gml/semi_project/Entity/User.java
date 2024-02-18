@@ -37,10 +37,10 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserRole userRole; // 권한
 
-    /*
+
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     private List<Board> boards;
-
+/*
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     private List<Like> likes; // 유저가 누른 좋아요
 
@@ -48,10 +48,7 @@ public class User {
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     private List<Comment> comments;
     private String nickname;
-
-
-     */
-
+*/
     public void rankUp(UserRole userRole, Authentication auth) {
         this.userRole = userRole;
 

@@ -1,6 +1,8 @@
 /*
 package com.gml.semi_project.Entity;
 
+import com.gml.semi_project.Entity.User;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -31,4 +33,3 @@ public class Comment extends BaseEntity {
         this.body = newBody;
     }
 }
-*/

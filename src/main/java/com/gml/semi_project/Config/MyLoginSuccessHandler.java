@@ -38,7 +38,7 @@ public class MyLoginSuccessHandler implements AuthenticationSuccessHandler {
             if (prevPage != null) {
                 pw.println("<script>alert('" + loginUser.getNickname() + "님 반갑습니다!'); location.href='" + prevPage + "';</script>");
             } else {
-                pw.println("<script>alert('" + loginUser.getNickname() + "님 반갑습니다!'); location.href='/';</script>");
+                pw.println("<script>alert('" + loginUser.getNickname() + "님 반갑습니다!'); location.href='/index';</script>");
             }
         }
         pw.flush();

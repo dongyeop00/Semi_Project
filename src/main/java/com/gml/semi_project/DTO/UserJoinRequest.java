@@ -20,7 +20,7 @@ public class UserJoinRequest {
                 .password(encodedPassword)
                 .nickname(nickname)
                 .userRole(UserRole.NEWBIE)
-                //.createdAt(LocalDateTime.now())
+                .createdAt(LocalDateTime.now())
                 .receivedLikeCnt(0)
                 .build();
     }
