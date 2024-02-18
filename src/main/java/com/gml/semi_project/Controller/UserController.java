@@ -40,6 +40,7 @@ public class UserController {
 
         // Validation
         if (userService.joinValid(req, bindingResult).hasErrors()) {
+            System.out.println("error 발생");
             return "users/join";
         }
 
